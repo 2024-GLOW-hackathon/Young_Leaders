@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TheRebelInTrend</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #84B1ED; /* 파란색 배경 */
+            color: white;
+            display: flex;
+        }
+        .content, .reviews {
+            width: 50%; /* 각 컨테이너가 차지할 너비 */
+            height: 100vh; /* 전체 높이 */
+            overflow-y: auto; /* 내용이 많을 경우 스크롤 */
+        }
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #f5f5f5;
+            padding: 10px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            height: 60px;
+            align-items: center;
+            z-index: 1000;
+        }
+        .reviews {
+            background-color: #f0f0f0; /* 리뷰 섹션 배경색 */
+            color: #333; /* 리뷰 섹션 텍스트 색상 */
+            padding: 20px; /* 여백 추가 */
+        }
+        .button {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: rgb(20, 20, 20);
+        border: none;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0px 0px 0px 4px rgba(180, 160, 255, 0.253);
+        cursor: pointer;
+        transition-duration: 0.3s;
+        overflow: hidden;
+        position: relative;
+        }
+
+        .svgIcon {
+        width: 12px;
+        transition-duration: 0.3s;
+        }
+
+        .svgIcon path {
+        fill: white;
+        }
+
+        .button:hover {
+        width: 140px;
+        border-radius: 50px;
+        transition-duration: 0.3s;
+        background-color: #84B1ED;
+        align-items: center;
+        }
+
+        .button:hover .svgIcon {
+        /* width: 20px; */
+        transition-duration: 0.3s;
+        transform: translateY(-200%);
+        }
+
+        .button::before {
+        position: absolute;
+        bottom: -20px;
+        content: "이전 페이지로";
+        color: white;
+        /* transition-duration: .3s; */
+        font-size: 0px;
+        }
+
+        .button:hover::before {
+        font-size: 13px;
+        opacity: 1;
+        bottom: unset;
+        /* transform: translateY(-30px); */
+        transition-duration: 0.3s;
+        }
+
+        .container {
+            margin: 100px;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #84B1ED; /* 제목을 위한 더 밝은 파란색 */
+        }
+        .book-image {
+            max-width: 80%; /* 이미지의 최대 너비를 조절 */
+            height: auto; /* 이미지의 높이를 자동 조절 */
+            margin: 20px 0; /* 상하 여백 추가 */
+        }
+        .dynamic-content {
+            opacity: 0; /* 내용은 처음에 보이지 않음 */
+            transition: opacity 1s; /* 2초 동안 내용이 서서히 나타남 */
+        }
+        .book-description {
+            font-weight: bold; /* 볼드체 */
+            font-size: 24px; /* 글자 크기 */
+            margin-top: 20px; /* 위쪽 여백 추가 */
+        }
+        .book-container {
+            width: 80%;
+            margin: 20px auto 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        h2 {
+            color: #333;
+        }
+
+        p {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <button class="button" onclick="history.back()">
+        <svg class="svgIcon" viewBox="0 0 384 512">
+          <path
+            d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"
+          ></path>
+        </svg>
+      </button>      
+    <h1>YoungReaders</h1>
+</div>
+<div class="container">
+    <img src="../img/gallery-img-01.jpg" alt="역행자" class="book-image">
+    <div class="book-container">
+        <h1>역행자</h1>
+        <div class="dynamic-content">
+            <p class="book-description">
+                한층 더 강력한 치트키, 독해진 팩트 폭격!<br>
+                50주 연속 베스트셀러·<br>
+                40만 독자의 삶을 바꾼『역행자』가 확장판으로 돌아왔다<br>
+                “절대로 읽지 마라!<br>
+                죽을 때까지 순리자로 살고 싶다면!”
+            </p>
+            <p>
+                    95퍼센트의 인간은 타고난 유전자와 본성의 꼭두각시로 살아간다. 
+                    이들은 평생 돈, 시간, 운명에게 속박되어, 평범함을 벗어나지 못하고 불행하게 사는 ‘순리자’다. 
+                    그러나 5퍼센트의 인간은 다르다. 
+                    이들은 타고난 유전자의 본성을 역행해 돈, 시간, 운명으로부터 완전한 자유를 얻는다. 
+                    본성을 거슬러 행복을 쟁취하는 이들이 바로 ‘역행자’다.<br>
+                    운명과 본능의 지배에서 벗어나 경제적 자유와 행복을 쟁취하는 라이프해킹의 비밀을 담은 책, 『역행자』가 2022년 출간된 지 1년 만에 확장판으로 다시 돌아왔다. 
+                    ‘무자본 연쇄창업마’로서 30대 초반에 자동화 수익을 완성한 자청, 그가 10년 동안 시행착오를 겪으며 찾아낸 ‘역행자 7단계’ 모델을 담은 『역행자』는 2022년 출간 즉시 ‘전 서점 종합 베스트셀러 1위 달성’, ‘1년 만에 40만 부 판매’라는 대기록을 세우며 대한민국에 ‘역행자 신드롬’을 불러일으켰다.<br>
+                    『역행자』 확장판은 더욱 묵직해진 팩트 폭격과 뼈 때리는 사례들, 저자의 비밀 노하우인 ‘무자본 창업 7단계 공식’ 등을 수록하며 초판에 비해 무려 100페이지 가량의 분량이 추가되었다. 저자의 생생한 육성을 그대로 담았을 뿐만 아니라 『역행자』를 만나 완전히 다른 인생을 살고 있는 독자들의 생생한 경험담을 수록하여 독자들로 하여금 역행자가 되지 않고는 버틸 수 없게 만든다. 한층 더 강력해진 『역행자』 확장판만 있다면, 당신도 저자와 함께 ‘돈, 시간, 운명’으로부터 완전한 자유를 얻게 될 것이다.
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function isInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+    }
+
+    const dynamicContent = document.querySelector('.dynamic-content');
+
+    window.addEventListener('scroll', () => {
+        if (isInViewport(dynamicContent)) {
+            dynamicContent.style.opacity = 1;
+        } else {
+            dynamicContent.style.opacity = 0;
+        }
+    });
+
+</script>
+
+</body>
+</html>

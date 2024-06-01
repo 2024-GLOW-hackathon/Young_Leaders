@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>뉴스 검색</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            color: blue;
+            margin-top: 20px;
+        }
+
+        #keyword {
+            width: 300px;
+            padding: 10px;
+            margin: 20px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            width: 80%;
+            max-width: 800px;
+            margin-top: 20px;
+        }
+
+        .news-item {
+            background-color: white;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .news-item h2 {
+            margin: 0 0 10px 0;
+        }
+
+        .news-item a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+
+        .news-item a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>뉴스 검색</h1>
+    <input type="text" id="keyword" placeholder="검색 키워드">
+    <button onclick="searchNews()">검색</button>
+    <div id="result"></div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        window.searchNews = function() {
+            var keyword = document.getElementById('keyword').value;
+            fetch(`/news?keyword=${encodeURIComponent(keyword)}`)
+                .then(response => response.json())
+                .then(data => {
+                    var newsHtml = data.items.map(item => 
+                        `<div class="news-item">
+                            <h2><a href="${item.link}" target="_blank">${item.title}</a></h2>
+                            <p>${item.description}</p>
+                        </div>`
+                    ).join('');
+                    document.getElementById('result').innerHTML = newsHtml;
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    });
+</script>
+</body>
+</html>
