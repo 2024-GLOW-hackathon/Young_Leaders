@@ -4,77 +4,46 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login Page</title>
-  <style>
-    body {
-      font-family: 'Source Sans Pro', sans-serif;
-      background-color: #f8f9fa;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-
-    .login-container {
-      background-color: #fff;
-      padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      max-width: 400px;
-      width: 100%;
-      text-align: center;
-    }
-
-    .login-container h1 {
-      margin-bottom: 1.5rem;
-      color: #4732ff;
-    }
-
-    .sns-login {
-      margin-top: 2rem;
-    }
-
-    .sns-btn {
-      width: 100%;
-      padding: 0.75rem;
-      border: none;
-      border-radius: 4px;
-      font-size: 1rem;
-      cursor: pointer;
-      margin-bottom: 0.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .sns-logo {
-      width: 50px;
-      height: 50px;
-      margin-right: 0.5rem;
-    }
-
-    .google-btn {
-      background-color: #db4437;
-      color: #fff;
-    }
-
-    .naver-btn {
-      background-color: #03c75a;
-      color: #fff;
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <div class="login-container">
     <h1>Login</h1>
     <div class="sns-login">
-      <button class="btn sns-btn google-btn">
+      <button class="btn sns-btn google-btn" onclick="loginWithGoogle()">
         <img src="img/google.png" alt="Google Logo" class="sns-logo"><b>Login with Google</b>
       </button>
-      <button class="btn sns-btn naver-btn">
+      <button class="btn sns-btn naver-btn" onclick="loginWithNaver()">
         <img src="img/naver.png" alt="Naver Logo" class="sns-logo"><b>Login with Naver</b>
       </button>
     </div>
   </div>
+  <script>
+    function loginWithGoogle() {
+      fetch('http://localhost:8080/api/login/google', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ /* 필요한 데이터 */ })
+      })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error('Error:', error));
+    }
+
+    function loginWithNaver() {
+      fetch('http://localhost:8080/api/login/naver', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ /* 필요한 데이터 */ })
+      })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error('Error:', error));
+    }
+  </script>
 </body>
 </html>

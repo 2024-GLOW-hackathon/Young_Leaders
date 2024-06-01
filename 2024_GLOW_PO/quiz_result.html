@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>퀴즈 결과</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            font-weight: bold;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>모든 문제를 풀었습니다!</h1>
+    <p id="result"></p>
+    <button onclick="goToMainPage()">메인 페이지로 돌아가기</button>
+
+    <script>
+        function showResult() {
+            const correctCount = localStorage.getItem('correctCount');
+            const wrongCount = localStorage.getItem('wrongCount');
+
+            document.getElementById('result').innerText = `당신은 총 5문제 중 ${correctCount}문제를 맞췄고, ${wrongCount}문제 틀렸습니다.`
+            
+        }
+        function goToMainPage() {
+            window.location.href = 'index.html';
+        }
+
+        showResult();
+    </script>
+</body>
+</html>

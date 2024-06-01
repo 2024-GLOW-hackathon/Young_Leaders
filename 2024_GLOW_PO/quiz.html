@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>금일의 뜻 퀴즈</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            font-weight: bold;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>금일의 뜻은?</h1>
+    <button onclick="checkAnswer(true)">오늘</button>
+    <button onclick="checkAnswer(false)">금요일</button>
+
+    <script>
+        if (window.location.href.endsWith("quiz.html")) { // 첫 페이지의 주소를 "quiz1.html"로 가정
+        localStorage.setItem('correctCount', '0');
+        localStorage.setItem('wrongCount', '0');
+    }
+    
+
+        function checkAnswer(isCorrect) {
+            let correctCount = parseInt(localStorage.getItem('correctCount'));
+            let wrongCount = parseInt(localStorage.getItem('wrongCount'));
+
+            if(isCorrect) {
+                correctCount += 1;
+                alert('맞췄습니다!');
+            } else {
+                wrongCount += 1;
+                alert('틀렸습니다. 금일은 \'오늘\'이라는 뜻입니다!');
+            }
+            localStorage.setItem('correctCount', correctCount);
+            localStorage.setItem('wrongCount', wrongCount);
+            window.location.href="quiz2.html";
+        }
+    </script>
+</body>
+</html>
