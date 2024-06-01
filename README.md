@@ -7,6 +7,7 @@ BE-master branch readme
 5. spring에서 fetch link 값을  GetMapping에 연동함.
 6. 이하 NewsApiController, NewsService, NewsClient, NewsResponseDto 를 통해 오픈 api 값을 NewsResponsDto 객체로 반환하려 했음.
 7. 다만 이 과정에서 실행시킬 때, 500 Internal Sever error가 발생함. 원인을 해결하려 했으나 시간 내에 찾기 실패함.
+8. 게시판 글쓰기 기능을 구현하려 했으나, html과 spring 연동에 시간 투자를 하여 구현을 완료하지 못함.
 
 
 BE
